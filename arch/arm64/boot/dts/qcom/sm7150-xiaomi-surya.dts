@@ -56,25 +56,6 @@
 	};
 };
 
-&apps_rsc {
-	regulators-0 {
-		vreg_l18a_2p8: ldo18 {
-			regulator-min-microvolt = <1696000>;
-			regulator-max-microvolt = <1904000>;
-		};
-	};
-
-	regulators-1 {
-		vreg_l7c_3p0: ldo7 {
-			//regulator-always-on;
-		};
-
-		vreg_l8c_1p8: ldo8 {
-			//regulator-always-on;
-		};
-	};
-};
-
 &dispcc {
 	status = "okay";
 };
@@ -380,4 +361,9 @@
 &venus {
 	firmware-name = "qcom/sm7150/surya/venus.mbn";
 	//status = "okay";
+};
+
+&vreg_l18a_2p8 {
+	regulator-min-microvolt = <1696000>;
+	regulator-max-microvolt = <1904000>;
 };

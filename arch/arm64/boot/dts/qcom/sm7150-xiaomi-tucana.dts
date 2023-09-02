@@ -151,8 +151,3 @@
 	firmware-name = "qcom/sm7150/tucana/modem.mbn";
 	status = "okay";
 };
-
-&tlmm {
-	/* Exact values to be confirmed... */
-	gpio-reserved-ranges = <0 4>, <59 4>;
-};

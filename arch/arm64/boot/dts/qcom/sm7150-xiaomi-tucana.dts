@@ -91,15 +91,6 @@
 	};
 };
 
-&apps_rsc {
-	regulators-0 {
-		vreg_l16a_2p8: ldo16 {
-			regulator-min-microvolt = <1800000>;
-			regulator-max-microvolt = <1800000>;
-		};
-	};
-};
-
 &i2c2 {
 	clock-frequency = <100000>;
 	status = "okay";

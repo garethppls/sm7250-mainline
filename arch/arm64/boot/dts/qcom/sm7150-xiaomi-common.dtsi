@@ -535,6 +535,8 @@
 };
 
 &tlmm {
+	gpio-reserved-ranges = <0 4>, <59 4>;
+
 	panel_esd_pin: panel-esd-state {
 		pins = "gpio4";
 		function = "gpio";

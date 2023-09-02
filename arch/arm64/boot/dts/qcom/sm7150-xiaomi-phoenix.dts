@@ -138,8 +138,3 @@
 &sdhc_2 {
 	status = "okay";
 };
-
-&tlmm {
-	/* Exact values to be confirmed... */
-	gpio-reserved-ranges = <0 4>, <59 4>;
-};

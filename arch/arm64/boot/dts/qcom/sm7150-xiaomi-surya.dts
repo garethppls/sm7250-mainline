@@ -75,14 +75,6 @@
 	};
 };
 
-&dsi0_phy {
-	status = "okay";
-};
-
-&dsi0 {
-	status = "okay";
-};
-
 &dispcc {
 	status = "okay";
 };
@@ -169,6 +161,14 @@
 };
 
 &mdss {
+	status = "okay";
+};
+
+&mdss_dsi0 {
+	status = "okay";
+};
+
+&mdss_dsi0_phy {
 	status = "okay";
 };
 

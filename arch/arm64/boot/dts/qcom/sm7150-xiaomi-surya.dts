@@ -151,7 +151,6 @@
 };
 
 &ipa {
-	memory-region = <&ipa_fw_mem>;
 	firmware-name = "qcom/sm7150/surya/ipa_fws.mbn";
 	status = "okay";
 };

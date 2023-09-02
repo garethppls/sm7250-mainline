@@ -200,7 +200,3 @@
 	firmware-name = "qcom/sm7150/toco/modem.mbn";
 	status = "okay";
 };
-
-&tlmm {
-	gpio-reserved-ranges = <0 4>, <59 4>;
-};

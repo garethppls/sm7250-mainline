@@ -1923,10 +1923,10 @@
 			operating-points-v2 = <&gpu_opp_table>;
 			qcom,gmu = <&gmu>;
 
+			#cooling-cells = <2>;
+
 			nvmem-cells = <&gpu_speed_bin>;
 			nvmem-cell-names = "speed_bin";
-
-			#cooling-cells = <2>;
 
 			zap-shader {
 				memory-region = <&gpu_mem>;
@@ -2389,19 +2389,13 @@
 					 <&dispcc DISP_CC_MDSS_VSYNC_CLK>;
 				clock-names = "bus", "iface", "rot", "lut",
 					      "core", "vsync";
-				assigned-clocks = <&dispcc DISP_CC_MDSS_VSYNC_CLK>,
-						  <&dispcc DISP_CC_MDSS_ROT_CLK>,
-						  <&dispcc DISP_CC_MDSS_AHB_CLK>;
-				assigned-clock-rates = <19200000>,
-						       <19200000>,
-						       <19200000>;
+				assigned-clocks = <&dispcc DISP_CC_MDSS_VSYNC_CLK>;
+				assigned-clock-rates = <19200000>;
 				operating-points-v2 = <&mdp_opp_table>;
 				power-domains = <&rpmhpd SC7180_CX>;
 
 				interrupt-parent = <&mdss>;
 				interrupts = <0>;
-
-				status = "disabled";
 
 				ports {
 					#address-cells = <1>;
@@ -2424,6 +2418,11 @@
 
 				mdp_opp_table: opp-table {
 					compatible = "operating-points-v2";
+
+					opp-19200000 {
+						opp-hz = /bits/ 64 <19200000>;
+						required-opps = <&rpmhpd_opp_min_svs>;
+					};
 
 					opp-200000000 {
 						opp-hz = /bits/ 64 <200000000>;
@@ -2992,7 +2991,7 @@
 			compatible = "qcom,wcn3990-wifi";
 			reg = <0 0x18800000 0 0x800000>;
 			reg-names = "membase";
-			iommus = <&apps_smmu 0x0240 0x1>;
+			iommus = <&apps_smmu 0x240 0x1>;
 			interrupts = <GIC_SPI 414 IRQ_TYPE_LEVEL_HIGH>,
 				     <GIC_SPI 415 IRQ_TYPE_LEVEL_HIGH>,
 				     <GIC_SPI 416 IRQ_TYPE_LEVEL_HIGH>,

@@ -237,7 +237,3 @@
 	firmware-name = "qcom/sm7150/davinci/modem.mbn";
 	status = "okay";
 };
-
-&tlmm {
-	gpio-reserved-ranges = <0 4>, <59 4>;
-};

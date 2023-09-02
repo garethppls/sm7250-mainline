@@ -595,7 +595,7 @@
 		};
 
 		xbl_mem: memory@85d00000 {
-			reg = <0x0 0x85d00000 0x0 0x140000>;
+			reg = <0x0 0x85d00000 0x0 0x200000>;
 			no-map;
 		};
 
@@ -604,7 +604,7 @@
 			no-map;
 		};
 
-		cmd_db: memory@85f20000 {
+		aop_cmd_db_mem: memory@85f20000 {
 			compatible = "qcom,cmd-db";
 			reg = <0x0 0x85f20000 0x0 0x20000>;
 			no-map;

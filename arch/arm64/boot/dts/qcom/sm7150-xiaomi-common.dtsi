@@ -390,6 +390,10 @@
 	status = "okay";
 };
 
+&ipa {
+	memory-region = <&ipa_fw_mem>;
+};
+
 &mdss_dsi0 {
 	vdda-supply = <&vdda_mipi_dsi0_1p2>;
 

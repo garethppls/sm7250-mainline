@@ -87,19 +87,6 @@
 	};
 };
 
-&apps_rsc {
-	regulators-0 {
-		vreg_l6a_1p2: ldo6 {
-			regulator-min-microvolt = <1050000>;
-		};
-
-		vreg_l16a_2p8: ldo16 {
-			regulator-min-microvolt = <1800000>;
-			regulator-max-microvolt = <1800000>;
-		};
-	};
-};
-
 &ipa {
 	firmware-name = "qcom/sm7150/courbet/ipa_fws.mbn";
 	status = "okay";

@@ -170,10 +170,6 @@
 	status = "okay";
 };
 
-&mdp {
-	status = "okay";
-};
-
 &mdss {
 	status = "okay";
 };

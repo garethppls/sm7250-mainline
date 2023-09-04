@@ -1,0 +1,536 @@
+// SPDX-License-Identifier: GPL-2.0-only
+
+#include <dt-bindings/interrupt-controller/arm-gic.h>
+
+/ {
+    interrupt-parent = <&intc>;
+
+    #address-cells = <2>;
+    #size-cells = <2>;
+
+    chosen { };
+
+    clocks {
+        xo_board: xo_board {
+            compatible = "fixed-clock";
+            clock-frequency = <38400000>;
+            #clock-cells = <0>;
+        };
+
+        sleep_clk: sleep_clk {
+            compatible = "fixed-clock";
+            clock-frequency = <32000>;
+            #clock-cells = <0>;
+        };
+    };
+
+    cpus {
+        #address-cells = <2>;
+        #size-cells = <0>;
+
+        CPU0: cpu@0 {
+            device_type = "cpu";
+            compatible = "qcom,kryo475";
+            reg = <0x00 0x00>;
+            capacity-dmips-mhz = <1024>;
+            dynamic-power-coefficient = <100>;
+            enable-method = "psci";
+            next-level-cache = <&L2_0>;
+
+            L2_0: l2-cache {
+                compatible = "cache";
+                next-level-cache = <&L3_0>;
+                cache-level = <2>;
+                L3_0: l3-cache {
+                    compatible = "cache";
+                    cache-level = <3>;
+                };
+            };
+
+            L1_I_0: l1-icache {
+                compatible = "cache";
+            };
+
+            L1_D_0: l1-dcache {
+                compatible = "cache";
+            };
+        };
+
+        CPU1: cpu@100 {
+            device_type = "cpu";
+            compatible = "qcom,kryo475";
+            reg = <0x00 0x100>;
+            capacity-dmips-mhz = <1024>;
+            dynamic-power-coefficient = <100>;
+            enable-method = "psci";
+            next-level-cache = <&L2_100>;
+
+            L2_100: l2-cache {
+                compatible = "cache";
+                next-level-cache = <&L3_0>;
+                cache-level = <2>;
+            };
+
+            L1_I_100: l1-icache {
+                compatible = "cache";
+            };
+
+            L1_D_100: l1-dcache {
+                compatible = "cache";
+            };
+        };
+
+        CPU2: cpu@400 {
+            device_type = "cpu";
+            compatible = "qcom,kryo475";
+            reg = <0x00 0x400>;
+            capacity-dmips-mhz = <1024>;
+            dynamic-power-coefficient = <100>;
+            enable-method = "psci";
+            next-level-cache = <&L2_400>;
+
+            L2_400: l2-cache {
+                compatible = "cache";
+                next-level-cache = <&L3_0>;
+                cache-level = <2>;
+            };
+
+            L1_I_400: l1-icache {
+                compatible = "cache";
+            };
+
+            L1_D_400: l1-dcache {
+                compatible = "cache";
+            };            
+        };
+
+        CPU3: cpu@500 {
+            device_type = "cpu";
+            compatible = "qcom,kryo475";
+            reg = <0x00 0x500>;
+            capacity-dmips-mhz = <1024>;
+            dynamic-power-coefficient = <100>;
+            enable-method = "psci";
+            next-level-cache = <&L2_500>;
+
+            L2_500: l2-cache {
+                compatible = "cache";
+                next-level-cache = <&L3_0>;
+                cache-level = <2>;
+            };
+
+            L1_I_500: l1-icache {
+                compatible = "cache";
+            };
+
+            L1_D_500: l1-dcache {
+                compatible = "cache";
+            };            
+        };
+
+        CPU4: cpu@200 {
+            device_type = "cpu";
+            compatible = "qcom,kryo475";
+            reg = <0x00 0x200>;
+            capacity-dmips-mhz = <1024>;
+            dynamic-power-coefficient = <100>;
+            enable-method = "psci";
+            next-level-cache = <&L2_200>;
+
+            L2_200: l2-cache {
+                compatible = "cache";
+                next-level-cache = <&L3_0>;
+                cache-level = <2>;
+            };
+
+            L1_I_200: l1-icache {
+                compatible = "cache";
+            };
+
+            L1_D_200: l1-dcache {
+                compatible = "cache";
+            };            
+        };
+
+        CPU5: cpu@300 {
+            device_type = "cpu";
+            compatible = "qcom,kryo475";
+            reg = <0x00 0x300>;
+            capacity-dmips-mhz = <1024>;
+            dynamic-power-coefficient = <100>;
+            enable-method = "psci";
+            next-level-cache = <&L2_300>;
+
+            L2_300: l2-cache {
+                compatible = "cache";
+                next-level-cache = <&L3_0>;
+                cache-level = <2>;
+            };
+
+            L1_I_300: l1-icache {
+                compatible = "cache";
+            };
+
+            L1_D_300: l1-dcache {
+                compatible = "cache";
+            };            
+        };
+
+        CPU6: cpu@600 {
+            device_type = "cpu";
+            compatible = "qcom,kryo475";
+            reg = <0x00 0x600>;
+            capacity-dmips-mhz = <1740>;
+            dynamic-power-coefficient = <341>;
+            enable-method = "psci";
+            next-level-cache = <&L2_600>;
+
+            L2_600: l2-cache {
+                compatible = "cache";
+                next-level-cache = <&L3_0>;
+                cache-level = <2>;
+            };
+
+            L1_I_600: l1-icache {
+                compatible = "cache";
+            };
+
+            L1_D_600: l1-dcache {
+                compatible = "cache";
+            };            
+        };
+
+        CPU7: cpu@700 {
+            device_type = "cpu";
+            compatible = "qcom,kryo475";
+            reg = <0x00 0x700>;
+            capacity-dmips-mhz = <1740>;
+            dynamic-power-coefficient = <375>;
+            enable-method = "psci";
+            next-level-cache = <&L2_700>;
+
+            L2_700: l2-cache {
+                compatible = "cache";
+                next-level-cache = <&L3_0>;
+                cache-level = <2>;
+            };
+
+            L1_I_700: l1-icache {
+                compatible = "cache";
+            };
+
+            L1_D_700: l1-dcache {
+                compatible = "cache";
+            };            
+        };
+
+        cpu-map {
+            cluster0 {
+                core0 {
+                    cpu = <&CPU0>;
+                };
+
+                core1 {
+                    cpu = <&CPU1>;
+                };
+
+                core2 {
+                    cpu = <&CPU2>;
+                };
+
+                core3 {
+                    cpu = <&CPU3>;
+                };
+
+                core4 {
+                    cpu = <&CPU4>;
+                };
+
+                core5 {
+                    cpu = <&CPU5>;
+                };
+            };
+
+            cluster1 {
+                core0 {
+                    cpu = <&CPU6>;
+                };
+            };
+
+            cluster2 {
+                core0 {
+                    cpu = <&CPU7>;
+                };
+            };
+        };
+    };
+
+    memory {
+        device_type = "memory";
+        /* We expect the bootloader to fill in the reg */
+		reg = <0 0 0 0>;
+    };
+
+    pmu {
+        compatible = "arm,armv8-pmuv3";
+        interrupts = <GIC_PPI 5 IRQ_TYPE_LEVEL_HIGH>;
+    };
+
+    psci {
+		compatible = "arm,psci-1.0";
+		method = "smc";        
+    };   
+
+    timer {
+        compatible = "arm,armv8-timer";
+        clock-frequency = <19200000>;
+        interrupts = <GIC_PPI 1 0xff08>,
+                     <GIC_PPI 2 0xff08>,
+                     <GIC_PPI 3 0xff08>,
+                     <GIC_PPI 0 0xff08>;
+    };
+
+    reserved_memory: reserved-memory {
+        #address-cells = <2>;
+        #size-cells = <2>;
+        ranges;
+
+        pil_wlan_fw_mem: memory@8ba00000 {
+			reg = <0x00 0x8ba00000 0x00 0x200000>;
+			no-map;
+        };
+
+        sec_apps_mem: memory@808ff000 {
+			reg = <0x00 0x808ff000 0x00 0x1000>;
+			no-map;
+        };
+
+        hyp_mem: memory@80000000 {
+			reg = <0x00 0x80000000 0x00 0x600000>;
+			no-map;
+        };
+
+        pil_ipa_fw_mem: memory@8bc00000 {
+			reg = <0x00 0x8bc00000 0x00 0x10000>;
+			no-map;
+        };
+
+        dfps_data_mem: memory@a2300000 {
+			reg = <0x00 0xa2300000 0x00 0x100000>;
+            no-map;
+        };
+
+        pil_gpu_mem: memory@8bc15400 {
+			reg = <0x00 0x8bc15400 0x00 0x2000>;
+			no-map;
+        };
+
+        removed_mem: memory@80b00000 {
+			reg = <0x00 0x80b00000 0x00 0x1300000>;
+			no-map;
+        };
+
+        cdsp_mem: memory@ee800000 {
+			reg = <0x00 0xee800000 0x00 0x400000>;
+            no-map;
+        };
+
+        linux_cma_mem: memory@f1400000 {
+			reg = <0x00 0xf1400000 0x00 0x2000000>;
+            no-map;
+        };
+
+        pil_cdsp_mem: memory@87400000 {
+			reg = <0x00 0x87400000 0x00 0x1e00000>;
+			no-map;
+        };
+
+        pil_camera_mem: memory@86000000 {
+			reg = <0x00 0x86000000 0x00 0x500000>;
+			no-map;
+        };
+
+        xbl_aop_mem: memory@80700000 {
+			reg = <0x00 0x80700000 0x00 0x160000>;
+			no-map;
+        };
+
+        modem_wlan_mem: memory@8c000000 {
+			reg = <0x00 0x8c000000 0x00 0xf800000>;
+			no-map;
+        };
+
+        pil_ipa_gsi_mem: memory@8bc10000 {
+			reg = <0x00 0x8bc10000 0x00 0x5400>;
+			no-map;
+        };
+
+        cdsp_sec_mem: memory@9f400000 {
+			reg = <0x00 0x9f400000 0x00 0xc00000>;
+			no-map;
+        };
+
+        sdsp_mem: memory@fd400000 {
+			reg = <0x00 0xfd400000 0x00 0x400000>;
+			no-map;
+        };
+
+        reserved_pil_mem: memory@8bc17400 {
+			reg = <0x00 0x8bc17400 0x00 0x3e8c00>;
+			no-map;
+        };
+
+        qseecom_mem: memory@fe400000 {
+			reg = <0x00 0xfe400000 0x00 0x1400000>;
+			no-map;
+        };
+
+        adsp_mem: memory@edc00000 {
+			reg = <0x00 0xedc00000 0x00 0xc00000>;
+			no-map;
+        };
+
+        secure_display_memory: memory@eec00000 {
+			reg = <0x00 0xeec00000 0x00 0xA000000>;
+			no-map;
+        };
+
+        qseecom_ta_mem: memory@fb400000 {
+			reg = <0x00 0xfb400000 0x00 0x1000000>;
+			no-map;
+        };
+
+        pil_adsp_mem: memory@89200000 {
+			reg = <0x00 0x89200000 0x00 0x2800000>;
+            no-map;
+        };
+
+        qtee_apps_mem: memory@81e00000 {
+			reg = <0x00 0x81e00000 0x00 0x4200000>;            
+            no-map;
+        };
+
+        cont_splash_memory: memory@a0000000 {
+			reg = <0x00 0xA0000000 0x00 0x2300000>;
+            no-map;
+        };
+
+        pil_video_mem: memory@86a00000 {
+            reg = <0x00 0x86a00000 0x00 0x500000>;
+            no-map;
+        };
+
+        reserved_mem: memory@80860000 {
+            reg = <0x00 0x80860000 0x00 0x20000>;
+            no-map;
+        };
+
+        pil_npu_mem: memory@86500000 {
+            reg = <0x00 0x86500000 0x00 0x500000>;
+            no-map;
+        };
+
+        smem_mem: memory@80900000 {
+            compatible = "qcom,smem";
+            reg = <0x00 0x80900000 0x00 0x200000>;
+            no-map;
+
+			qcom,rpm-msg-ram = <&rpm_msg_ram>;
+            hwlocks = <&tcsr_mutex 3>;
+        };
+    };
+
+    tcsr_mutex: hwlock {
+        compatible = "qcom,tcsr-mutex";
+        syscon = <&tcsr_mutex_regs 0 0x1000>;
+        #hwlock-cells = <1>;
+    };
+
+    soc: soc {
+        compatible = "simple-bus";
+        #address-cells = <1>;
+        #size-cells = <1>;
+        ranges = <0 0 0 0xffffffff>;
+
+        intc: interrupt-controller@17a00000 {
+            compatible = "arm,gic-v3";
+            #interrupt-cells = <3>;
+            interrupt-controller;
+            interrupt-parent = <&intc>;
+            #redistributor-regions = <1>;
+            redistributor-stride = <0x0 0x20000>;
+            reg = <0x17a00000 0x10000>,
+                  <0x17a60000 0x100000>;
+            interrupts = <GIC_PPI 8 IRQ_TYPE_LEVEL_HIGH>;
+        };
+
+        timer@17c20000 {
+            compatible = "arm,armv7-timer-mem";
+            #address-cells = <1>;
+            #size-cells = <1>;
+            ranges;
+            reg = <0x17c20000 0x1000>;
+            clock-frequency = <19200000>;
+
+            frame@17c21000 {
+                frame-number = <0>;
+                interrupts = <GIC_SPI 8 IRQ_TYPE_LEVEL_HIGH>,
+                             <GIC_SPI 6 IRQ_TYPE_LEVEL_HIGH>;
+                reg = <0x17c21000 0x1000>,
+                      <0x17c22000 0x1000>;
+            };
+
+            frame@f123000 {
+                frame-number = <1>;
+                interrupts = <GIC_SPI 9 IRQ_TYPE_LEVEL_HIGH>;
+                reg = <0x17c23000 0x1000>;
+                status = "disabled";
+            };
+
+            frame@17c25000 {
+                frame-number = <2>;
+                interrupts = <GIC_SPI 10 IRQ_TYPE_LEVEL_HIGH>;
+                reg = <0x17c25000 0x1000>;
+                status = "disabled";
+            };
+
+            frame@17c27000 {
+                frame-number = <3>;
+                interrupts = <GIC_SPI 11 IRQ_TYPE_LEVEL_HIGH>;
+                reg = <0x17c27000 0x1000>;
+                status = "disabled";
+            };
+
+            frame@17c29000 {
+                frame-number = <4>;
+                interrupts = <GIC_SPI 12 IRQ_TYPE_LEVEL_HIGH>;
+                reg = <0x17c29000 0x1000>;
+                status = "disabled";
+            };
+
+            frame@17c2b000 {
+                frame-number = <5>;
+                interrupt = <GIC_SPI 13 IRQ_TYPE_LEVEL_HIGH>;
+                reg = <0x17c2b000 0x1000>;
+                status = "disabled";
+            };
+
+            frame@17c2d000 {
+                frame-number = <6>;
+                interrupts = <GIC_SPI 14 IRQ_TYPE_LEVEL_HIGH>;
+                reg = <0x17c2d000 0x1000>;
+                status = "disabled";
+            };
+        };
+
+        tcsr_mutex_regs: syscon@182a0018 {
+            compatible = "syscon";
+            reg = <0x182a0000 0x04>;  
+        };
+
+		rpm_msg_ram: sram@45f0000 {
+			compatible = "qcom,rpm-msg-ram";
+			reg = <0x045f0000 0x7000>;
+		};        
+    };
+};

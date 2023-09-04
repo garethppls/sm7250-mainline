@@ -1,0 +1,64 @@
+// SPDX-License-Identifier: GPL-2.0-only
+
+/dts-v1/;
+
+#include "sm7250.dtsi"
+
+/ {
+    model = "OnePlus Nord AC2003";
+    compatible = "oneplus,avicii", "qcom,sm7250";
+    chassis-type = "handset";
+
+    /* required for bootloader to select correct board */
+    qcom,msm-id = <0x190 0x10000 0x1b8 0x10000>;
+    qcom,board-id = <0x08 0x00>;
+
+    aliases {
+    };
+
+    chosen {
+        bootargs = "earlycon=tty0 console=tty0";
+
+        #address-cells = <2>;
+        #size-cells = <2>;
+        ranges;
+
+        stdout-path = "framebuffer0";
+
+        framebuffer0: framebuffer@a0000000 {
+            compatible = "simple-framebuffer";
+            reg = <0 0xA0000000 0 (1080 * 2400 * 4)>;
+            width = <1080>;
+            height = <2400>;
+            stride = <(1080 * 4)>;
+            format = "a8r8g8b8";
+            status = "okay";
+        };
+    };
+};
+
+&reserved_memory {
+    mtp_mem: memory@cc300000 {
+		reg = <0x00 0xcc300000 0x00 0xb00000>;
+        no-map;
+    }; 
+
+    param_mem: memory@cc200000 {
+		reg = <0x00 0xcc200000 0x00 0x100000>;
+        no-map;
+    };
+
+    bootloader_log_mem: memory@b7e00000 {
+		reg = <0x00 0xb7e00000 0x00 0x8000>;
+        no-map;
+    };
+
+    ramoops@cbe00000 {
+		compatible = "ramoops";
+		reg = <0x00 0xcbe00000 0x00 0x400000>;
+		record-size = <0x40000>;
+		pmsg-size = <0x200000>;
+		console-size = <0x40000>;
+		ftrace-size = <0x40000>;            
+    };
+};
